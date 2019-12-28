@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+__progname__="tkcrud"
+__python_exec__="python"
+
+
+
+
+# Create virtual machine
+if [[ ! -d "venv" ]]; then
+    
+    printf "\033[0;96m\nCreating machine virtual ...\033[0m\n\n"
+    $__python_exec__ -m venv venv
+    printf "\033[0;92m\nMachine virtual created!\033[0m\n\n"
+
+fi
+
+# Verify that the virtual machine exists, if it does not exist,
+# shows the commands to execute.
+if [[ ! $VIRTUAL_ENV ]]; then
+    printf "\033[0;93m\nExecute the commands:\033[0m\n\n"
+    printf "\033[0;94m>> . venv/bin/activate\033[0m\n"
+    printf "\033[0;94m>> pip install -r requirements-dev.txt && pip install -r requirements.txt \033[0m\n"
+    exit 1
+fi
+
+case $1 in
+    build|-b|-B)
+        ./"$0" clear
+        ./setup.py bdist bdist_wheel
+        printf "Compiled!\n"
+    ;;
+    install|-i|-I)
+        ./"$0" build
+        ./setup.py install
+#        ./setup.py develop
+        # shellcheck disable=SC1090
+        ./"$0" clear
+        printf "Installed!\n"
+    ;;
+    reinstall|-r|-R)
+        ./"$0" uninstall
+        ./"$0" install
+    ;;
+    clear|-c|-C)
+        rm -rf build dist tkcrud.egg-info
+        printf "Clean!\n"
+    ;;
+    uninstall|-u|-U)
+        pip uninstall ${__progname__} -y
+        # shellcheck disable=SC1090
+        printf "Uninstalled!\n"
+    ;;
+    testpypi|-tp)
+        ./"$0" build
+        # Note: Create ~/.pypirc file to receive "testpypi" header.
+        twine upload --repository testpypi dist/*
+    ;;
+    pypi|-p)
+        ./"$0" build
+        # Note: Create ~/.pypirc file to receive "pypi" header.
+        twine upload --repository pypi dist/*
+        # twine upload dist/*
+    ;;
+    *)
+        # shellcheck disable=SC2059
+        printf "\nUsage: $0 { install [-i] | uninstall [-u] | reinstall [-r] | build [-b] | clear [-c] | testpypi [-tp] | pypi [-p] }\n"
+    ;;
+esac
+exit 0

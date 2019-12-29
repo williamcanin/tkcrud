@@ -11,7 +11,7 @@ class ClientModel(Base):
         Base.__init__(self)
         self.db = database()
         self.parm = '?'
-        if self.app_config['App']['database']['dbname'] == 'mysql':
+        if self.app_config['connection']['dbname'] == 'mysql':
             self.parm = '%s'
 
     def get_all_clients(self):

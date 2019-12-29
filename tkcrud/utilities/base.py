@@ -29,22 +29,21 @@ class Base:
 
     def create_config(self):
 
-        config = {"App": {
-                        "database": {
-                            "dbname": "",
-                            "mysql": {
-                                "user": "",
-                                "password": "",
-                                "host": "",
-                                "database": "",
-                                "raise_on_warnings": True
-                            },
-                            "sqlite": {
-                                "filename": ""
-                            }
-                        }
-                    }
-                  }
+        config = {
+            "connection": {
+                "dbname": "",
+                "mysql": {
+                    "user": "",
+                    "password": "",
+                    "host": "",
+                    "database": "",
+                    "raise_on_warnings": True
+                },
+                "sqlite": {
+                    "filename": ""
+                }
+            }
+        }
 
         configfile = join(self.home_user, '.config/tkcrud/config/config.json')
 
@@ -53,9 +52,9 @@ class Base:
                 dump(config, file, indent=4, separators=(',', ': '))
 
     def create_schema(self, root_path, database, sql=''):
-        if self.app_config['App']['database']['dbname'] == 'sqlite':
+        if self.app_config['connection']['dbname'] == 'sqlite':
             sql = join(root_path, 'data/sql_sqlite.sql')
-        elif self.app_config['App']['database']['dbname'] == 'mysql':
+        elif self.app_config['connection']['dbname'] == 'mysql':
             sql = join(root_path, 'data/sql_mysql.sql')
         query = open(sql, 'r').read()
         database.execute(query)

@@ -36,6 +36,10 @@ class ClientController:
         message_box.showinfo('Warning!', message)
 
     def saving_updating(self, tree, end, action, *args):
+        """
+
+        :rtype: object
+        """
         message_action = None
         dic = {'message_box': args[0], 'id': args[1]}
         if self.entry_validation(dic['message_box'], *args):
@@ -47,3 +51,34 @@ class ClientController:
             get_clients(tree, end)
         else:
             self.window_popup(dic['message_box'], 'There are required fields.')
+
+    def client_delete(self, tree, end, message_box):
+        try:
+            _id = tree.item(tree.selection())['values'][0]
+            message = message_box.askquestion('Delete register',
+                                              f'Really want to delete the ID record {_id}?',
+                                              icon='warning', parent=self)
+            if message == 'yes':
+                msg_delete = ClientModel(Database).delete_client(_id)
+                self.window_popup(message_box, msg_delete)
+                get_clients(tree, end)
+        except IndexError:
+            self.window_popup(message_box, 'Please, select record.')
+        return
+
+    def search_client(self, tree, end, *args):
+        dic = {'message_box': args[0], 'search_entry': args[1], 'type_search': args[2]}
+
+        if not dic['type_search']:
+            self.window_popup(dic['message_box'], 'Select an type search in combo!')
+        elif dic['type_search'] == 'ID' and not dic['search_entry'].isnumeric():
+            self.window_popup(dic['message_box'], 'For this search use only numbers.')
+        else:
+            db_rows = ClientModel(Database).search_client(dic['search_entry'], dic['type_search'])
+            if db_rows:
+                clean_table(tree)
+                for row in db_rows:
+                    tree.insert("", end, values=row)
+            else:
+                get_clients(tree, end)
+                dic['message_box'].showinfo('Warning', f'No "{dic["search_entry"]}" Records Found', parent=self)

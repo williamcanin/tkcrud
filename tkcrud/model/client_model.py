@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 # # -*- coding: utf-8 -*-
 
+from tkcrud.utilities.base import Base
 
-class ClientModel:
+
+class ClientModel(Base):
     _table = 'clients'
 
-    def __init__(self, database, dbname):
-        self.db = database
+    def __init__(self, database):
+        Base.__init__(self)
+        self.db = database()
         self.parm = '?'
-        if dbname == 'mysql':
+        if self.app_config['App']['database']['dbname'] == 'mysql':
             self.parm = '%s'
 
     def get_all_clients(self):

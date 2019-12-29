@@ -2,15 +2,15 @@ from mysql.connector import connect as connect_mysql
 from sqlite3 import connect as connect_sqlite
 # from tkinter import messagebox
 from textwrap import dedent
-from os.path import join
-from .base import Base
+from os.path import join, dirname, abspath, realpath
+from tkcrud.utilities.base import Base
 
 
 class Database(Base):
 
     def __init__(self):
-        super().__init__()
         try:
+            Base.__init__(self)
             if self.app_config['App']['database']['dbname'] == 'mysql':
                 # MySQL get data for connection in file JSON.
                 connection_data = self.app_config['App']['database']['mysql']
@@ -20,9 +20,11 @@ class Database(Base):
                 sqlite_filename = self.app_config['App']['database']['sqlite']['filename']
                 dbname = join(self.home_user, f'.config/tkcrud/data/{sqlite_filename}')
                 connection_data = join(self.home_user, dbname)
+                # connect_sqlite: Create file sqlite
                 self._conn = connect_sqlite(connection_data)
                 # print('Connection successfully!')
             self._cursor = self._conn.cursor()
+
         except Exception as e:
             msg = dedent("A connection error has occurred."
                          "Check connectivity data (config.json) and make sure"
@@ -65,8 +67,9 @@ class Database(Base):
         self.cursor.execute(sql, params or ())
         return self.fetchone()
 
-    def create_scheme(self, sql, params=None):
-        self.cursor.execute(sql, params or ())
+    def schema(self, sql):
+        self.cursor.execute(sql)
+        self.commit()
 
 
 # qry = open(sql_file, 'r').read()

@@ -21,11 +21,11 @@
         "python_requires": ">= 3.8",
         "platforms": "any",
         "console_scripts": [
-            "tkcrud-run = tkcrud.tkcrud:TKCrud"
+            "tkcrud-run = tkcrud.tkcrud:TkCrud"
             ],
         "keywords": "tkcrud crud python mvc",
         "package_data": {
-            "tkcrud": ["config/config.json", "data/schema.sql"]
+            "tkcrud": ["config/config.json", "data/*.sql"]
         },
         "include_package_data": true
     }

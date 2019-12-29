@@ -1,4 +1,4 @@
-CREATE TABLE clients (
+CREATE TABLE IF NOT EXISTS clients (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT(200),
 	address TEXT(100),
@@ -10,4 +10,3 @@ CREATE TABLE clients (
 	cell_phone TEXT(17),
 	email TEXT(100)
 );
-CREATE TABLE sqlite_sequence(name,seq);

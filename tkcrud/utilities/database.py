@@ -66,11 +66,3 @@ class Database(Base):
     def query_one(self, sql, params=None):
         self.cursor.execute(sql, params or ())
         return self.fetchone()
-
-# qry = open(sql_file, 'r').read()
-# conn = sqlite3.connect('/path/to/db')
-# c = conn.cursor()
-# c.execute(qry)
-# conn.commit()
-# c.close()
-# conn.close()

@@ -52,6 +52,14 @@ class Base:
             with open(configfile, 'w') as file:
                 dump(config, file, indent=4, separators=(',', ': '))
 
+    @staticmethod
+    def create_schema(root_path, database):
+        sql = join(root_path, 'data/sql.sql')
+        query = open(sql, 'r').read()
+        database.execute(query)
+        database.commit()
+        database.connection.close()
+
     # @staticmethod
     # def get_sql_list(sql_file_path):
     #     with open(sql_file_path, 'r', encoding='utf-8') as f:

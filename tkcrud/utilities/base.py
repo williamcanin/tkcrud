@@ -53,7 +53,7 @@ class Base:
                 dump(config, file, indent=4, separators=(',', ': '))
 
     # @staticmethod
-    # def get_sql(sql_file_path):
+    # def get_sql_list(sql_file_path):
     #     with open(sql_file_path, 'r', encoding='utf-8') as f:
     #         data = f.read().splitlines()
     #     stmt = ''

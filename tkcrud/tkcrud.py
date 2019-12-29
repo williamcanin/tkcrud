@@ -13,7 +13,8 @@ class TkCrud(Database):
         # Create SQL (Database)
         sql = join(dirname(realpath(__file__)), 'data/sql.sql')
         qry = open(sql, 'r').read()
-        self.schema(qry)
+        self.execute(qry)
+        self.commit()
         self.connection.close()
 
     def __str__(self):

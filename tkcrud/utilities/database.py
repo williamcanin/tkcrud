@@ -63,14 +63,9 @@ class Database(Base):
         self.cursor.execute(sql, params or ())
         return self.fetchall()
 
-    def query2(self, sql, params=None):
+    def query_one(self, sql, params=None):
         self.cursor.execute(sql, params or ())
         return self.fetchone()
-
-    def schema(self, sql):
-        self.cursor.execute(sql)
-        self.commit()
-
 
 # qry = open(sql_file, 'r').read()
 # conn = sqlite3.connect('/path/to/db')

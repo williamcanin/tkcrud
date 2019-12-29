@@ -5,6 +5,7 @@ from tkcrud.views.client_view import FormClient
 
 
 class TkCrud(Database, tk.Frame):
+    # TODO: Não criando as configurações iniciais.
 
     def __init__(self, master=tk.Tk()):
         Database.__init__(self)

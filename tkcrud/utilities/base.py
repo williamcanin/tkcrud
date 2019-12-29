@@ -2,9 +2,10 @@ from os.path import join, isfile
 from json import load
 from json import dump
 from pathlib import Path
+import sqlite3
 
 
-class Utilities:
+class Base:
 
     def __init__(self, root_path=None):
         self.root_path = root_path
@@ -52,3 +53,19 @@ class Utilities:
         if not isfile(configfile):
             with open(configfile, 'w') as file:
                 dump(config, file, indent=4, separators=(',', ': '))
+
+    @staticmethod
+    def get_sql(sql_file_path):
+        with open(sql_file_path, 'r', encoding='utf-8') as f:
+            data = f.read().splitlines()
+        stmt = ''
+        stmts = []
+        for line in data:
+            if line:
+                if line.startswith('--'):
+                    continue
+                stmt += line.strip() + ' '
+                if ';' in stmt:
+                    stmts.append(stmt.strip())
+                    stmt = ''
+        return stmts

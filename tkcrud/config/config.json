@@ -25,7 +25,7 @@
             ],
         "keywords": "tkcrud crud python mvc",
         "package_data": {
-            "tkcrud": ["config/config.json"]
+            "tkcrud": ["config/config.json", "data/schema.sql"]
         },
         "include_package_data": true
     }

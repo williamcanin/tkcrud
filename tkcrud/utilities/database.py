@@ -3,11 +3,10 @@ from sqlite3 import connect as connect_sqlite
 # from tkinter import messagebox
 from textwrap import dedent
 from os.path import join
-from os.path import dirname, abspath
-from .utils import Utilities
+from .base import Base
 
 
-class Database(Utilities):
+class Database(Base):
 
     def __init__(self):
         super().__init__()
@@ -22,7 +21,7 @@ class Database(Utilities):
                 dbname = join(self.home_user, f'.config/tkcrud/data/{sqlite_filename}')
                 connection_data = join(self.home_user, dbname)
                 self._conn = connect_sqlite(connection_data)
-                print('Connection successfully!')
+                # print('Connection successfully!')
             self._cursor = self._conn.cursor()
         except Exception as e:
             msg = dedent("A connection error has occurred."
@@ -65,3 +64,15 @@ class Database(Utilities):
     def query2(self, sql, params=None):
         self.cursor.execute(sql, params or ())
         return self.fetchone()
+
+    def create_scheme(self, sql, params=None):
+        self.cursor.execute(sql, params or ())
+
+
+# qry = open(sql_file, 'r').read()
+# conn = sqlite3.connect('/path/to/db')
+# c = conn.cursor()
+# c.execute(qry)
+# conn.commit()
+# c.close()
+# conn.close()

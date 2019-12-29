@@ -52,9 +52,11 @@ class Base:
             with open(configfile, 'w') as file:
                 dump(config, file, indent=4, separators=(',', ': '))
 
-    @staticmethod
-    def create_schema(root_path, database):
-        sql = join(root_path, 'data/sql.sql')
+    def create_schema(self, root_path, database, sql=''):
+        if self.app_config['App']['database']['dbname'] == 'sqlite':
+            sql = join(root_path, 'data/sql_sqlite.sql')
+        elif self.app_config['App']['database']['dbname'] == 'mysql':
+            sql = join(root_path, 'data/sql_mysql.sql')
         query = open(sql, 'r').read()
         database.execute(query)
         database.commit()

@@ -1,0 +1,32 @@
+{
+    "Setup":{
+        "app_name": "snakypy-tkcrud",
+        "app_version": "1.0.0",
+        "app_license": "MIT Licences",
+        "app_description": "Python crud using MVC-style Tkinter.",
+        "app_url": "https://github.com/tkcrud/tkcrud",
+        "author": {
+            "name": "William da Costa Canin",
+            "email": "william.costa.canin@gmail.com",
+            "website": "https://williamcanin.me",
+            "github": "https://github.com/williamcanin"
+        },
+        "app_classifiers": ["Programming Language :: Python :: 3",
+            "License :: OSI Approved :: MIT License",
+            "Operating System :: POSIX",
+            "Operating System :: POSIX :: Linux",
+            "Operating System :: MacOS :: MacOS X",
+            "Operating System :: Unix"
+        ],
+        "python_requires": ">= 3.8",
+        "platforms": "any",
+        "console_scripts": [
+            "tkcrud-run = tkcrud.tkcrud:TkCrud"
+            ],
+        "keywords": "tkcrud crud python mvc",
+        "package_data": {
+            "tkcrud": ["config/*.json", "data/*.sql"]
+        },
+        "include_package_data": true
+    }
+}

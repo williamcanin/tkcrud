@@ -1,0 +1,3 @@
+[console_scripts]
+tkcrud-run = tkcrud.tkcrud:TkCrud
+

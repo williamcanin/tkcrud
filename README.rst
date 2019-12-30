@@ -16,6 +16,9 @@ Requirements
 Using
 -----
 
+**Developer:**
+
+
 This project was created with `PyCharm`_ 2019.3, so we would recommend using the project with PyCharm.
 If you do not want to, you can start the project as follows:
 
@@ -29,6 +32,14 @@ If you do not want to, you can start the project as follows:
     $ pip install -r requirements-dev.txt
     $ bin/setup -i
     $ tkcrud-run
+
+**User:**
+
+.. code-block:: shell
+
+    $ pip install snakypy-tkcrud --user
+    $ tkcrud-run
+
 
 Donation
 --------

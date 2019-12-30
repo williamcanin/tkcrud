@@ -22,6 +22,8 @@ Python crud using MVC-style Tkinter.
 This project was created with [PyCharm](https://www.jetbrains.com/pycharm/) 2019.3, so we would recommend using the project with PyCharm.
 If you do not want to, you can start the project as follows:
 
+**Developer:**
+
 ```
 $ git clone https://github.com/snakypy/snakypy-tkcrud.git
 $ cd tkcrud
@@ -32,6 +34,13 @@ $ pip install -r requirements-dev.txt
 $ bin/setup -i
 $ tkcrud-run
 ``` 
+
+**User:**
+
+```
+$ pip install snakypy-tkcrud --user
+$ tkcrud-run
+```
 
 ## Donation
 

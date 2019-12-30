@@ -42,7 +42,9 @@ case $1 in
         ./"$0" install
     ;;
     clear|-c|-C)
-        rm -rf build dist ${__progname__}.egg-info
+        # shellcheck disable=SC2001
+        egg_name="$(echo $__progname__ | sed 's/-/_/g').egg-info"
+        rm -rf build dist "$egg_name"
         printf "Clean!\n"
     ;;
     uninstall|-u|-U)

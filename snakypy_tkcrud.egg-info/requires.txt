@@ -1,6 +1,0 @@
-tkcalendar==1.6.1
-mysql-connector-python==8.0.18
-
-[dev]
-twine==3.1.1
-wheel==0.33.6

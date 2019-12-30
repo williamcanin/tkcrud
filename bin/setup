@@ -5,7 +5,6 @@ __python_exec__="python"
 
 
 
-
 # Create virtual machine
 if [[ ! -d "venv" ]]; then
     

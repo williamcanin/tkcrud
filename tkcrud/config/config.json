@@ -3,7 +3,7 @@
         "app_name": "tkcrud",
         "app_version": "1.0.1",
         "app_license": "MIT Licences",
-        "app_description": "Crud python using TKinter.",
+        "app_description": "Python crud using MVC-style Tkinter.",
         "app_url": "https://github.com/tkcrud/tkcrud",
         "author": {
             "name": "William da Costa Canin",

@@ -21,7 +21,7 @@ class TkCrud(Database, tk.Frame):
         cad_menu = tk.Menu(menu_bar, tearoff=0, font=self.font_submenu)
         cad_menu.add_command(label='Clients', command=lambda: FormClient(self.master))
         cad_menu.add_separator()
-        cad_menu.add_command(label='Exit')
+        cad_menu.add_command(label='Exit', command=lambda: master.destroy())
         menu_bar.add_cascade(label='Registration', menu=cad_menu, font=self.font_menu)
         tools = tk.Menu(menu_bar, tearoff=0)
         tools.add_command(label='Backup Database', font=self.font_submenu)

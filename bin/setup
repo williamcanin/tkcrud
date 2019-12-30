@@ -43,7 +43,7 @@ case $1 in
         ./"$0" install
     ;;
     clear|-c|-C)
-        rm -rf build dist tkcrud.egg-info
+        rm -rf build dist ${__progname__}.egg-info
         printf "Clean!\n"
     ;;
     uninstall|-u|-U)

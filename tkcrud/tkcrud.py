@@ -5,25 +5,21 @@ from tkcrud.views.client_view import FormClient
 
 
 class TkCrud(Database, tk.Frame):
-    # TODO: Não criando as configurações iniciais.
 
     def __init__(self, master=tk.Tk()):
+        self.master = master
         Database.__init__(self)
-        # Create all directory
-        self.create_folder(self.home_user, '.config/tkcrud/config')
-        self.create_folder(self.home_user, '.config/tkcrud/data')
-        self.create_config()
         # Create Database
         self.create_schema(dirname(realpath(__file__)), Database())
         # Starting Tk default
-        tk.Frame.__init__(self, master)
+        tk.Frame.__init__(self, self.master)
         self.font_menu = ('Sans Serif', 10, 'bold')
         self.font_submenu = ('Sans Serif', 10)
-        master.title('System')
-        master.geometry("1024x580")
-        menu_bar = tk.Menu(master)
+        self.master.title('System')
+        self.master.geometry("1024x580")
+        menu_bar = tk.Menu(self.master)
         cad_menu = tk.Menu(menu_bar, tearoff=0, font=self.font_submenu)
-        cad_menu.add_command(label='Clientes', command=lambda: FormClient(master))
+        cad_menu.add_command(label='Clientes', command=lambda: FormClient(self.master))
         cad_menu.add_separator()
         cad_menu.add_command(label='Sair')
         menu_bar.add_cascade(label='Cadastros', menu=cad_menu, font=self.font_menu)
@@ -33,11 +29,16 @@ class TkCrud(Database, tk.Frame):
         help_menu = tk.Menu(menu_bar, tearoff=0)
         help_menu.add_command(label='Sobre', font=self.font_submenu)
         menu_bar.add_cascade(label='Ajuda', menu=help_menu, font=self.font_menu)
-        master.config(menu=menu_bar)
-        master.resizable(0, 0)
+        self.master.config(menu=menu_bar)
+        self.master.resizable(0, 0)
 
     def __str__(self):
+        # root = tk.Tk()
         return TkCrud().mainloop()
+
+    # @staticmethod
+    # def main():
+    #     return TkCrud(tk.Tk()).mainloop()
 
 
 if __name__ == '__main__':

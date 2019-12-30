@@ -234,7 +234,9 @@ class FormClient(tk.Toplevel, ClientController):
                                   FormClientUpdate(master, tree))
         button_delete.grid(row=1, column=3)
         button_delete = tk.Button(frame, text="Delete", width='10',
-                                  cursor="hand2", font=font_default)
+                                  cursor="hand2", font=font_default,
+                                  command=lambda event=None:
+                                  self.client_delete(tree, tk.END, messagebox))
         button_delete.grid(row=1, column=4)
 
         self.resizable(0, 0)

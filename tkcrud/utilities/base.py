@@ -9,6 +9,11 @@ class Base:
     def __init__(self):
         self.home_user = str(Path.home())
         config_json = '.config/tkcrud/config/config.json'
+        # Create all directory
+        self.create_folder(self.home_user, '.config/tkcrud/config')
+        self.create_folder(self.home_user, '.config/tkcrud/data')
+        # Create config
+        self.create_config()
         self.app_config_path = join(self.home_user, config_json)
         if isfile(self.app_config_path):
             with open(self.app_config_path) as file:

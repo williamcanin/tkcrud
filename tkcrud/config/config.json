@@ -1,6 +1,6 @@
 {
     "Setup":{
-        "app_name": "tkcrud",
+        "app_name": "snakypy-tkcrud",
         "app_version": "1.0.0",
         "app_license": "MIT Licences",
         "app_description": "Python crud using MVC-style Tkinter.",

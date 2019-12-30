@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-__progname__="tkcrud"
+__progname__="snakypy-tkcrud"
 __python_exec__="python"
 
 

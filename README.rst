@@ -40,6 +40,50 @@ If you do not want to, you can start the project as follows:
     $ pip install snakypy-tkcrud --user
     $ tkcrud-run
 
+When you run the project for the first time, it will create database access settings in the "$ HOME / .config / tkcrud / config / config.json" directory.
+Open this file with any text editor, and choose between MySQL and SQLite for database.
+Example:
+
+**For SQLite:**
+
+.. code-block:: json
+
+    {
+        "connection": {
+            "dbname": "sqlite",
+            "mysql": {
+                "user": "",
+                "password": "",
+                "host": "",
+                "database": "",
+                "raise_on_warnings": true
+            },
+            "sqlite": {
+                "filename": "database.sqlite"
+            }
+        }
+    }
+
+
+**For MySQL:**
+
+.. code-block:: json
+
+    {
+        "connection": {
+            "dbname": "mysql",
+            "mysql": {
+                "user": "root",
+                "password": "123",
+                "host": "localhost",
+                "database": "tkcrud",
+                "raise_on_warnings": true
+            },
+            "sqlite": {
+                "filename": ""
+            }
+        }
+    }
 
 Donation
 --------

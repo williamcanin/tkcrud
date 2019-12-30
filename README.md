@@ -2,6 +2,7 @@
 
 Python crud using MVC-style Tkinter.
 
+
 ## Features
 
 - Using [mysql-connect-python](https://pypi.org/project/mysql-connector-python/) and [Tkcalendar](https://pypi.org/project/tkcalendar) of non-native libraries, the rest all on the nail.
@@ -22,7 +23,7 @@ This project was created with [PyCharm](https://www.jetbrains.com/pycharm/) 2019
 If you do not want to, you can start the project as follows:
 
 ```
-$ git clone https://github.com/williamcanin/tkcrud.git
+$ git clone https://github.com/snakypy/snakypy-tkcrud.git
 $ cd tkcrud
 $ python -m venv venv
 $ . venv/bin/activate
@@ -41,6 +42,8 @@ If you liked my work, buy me a coffee :coffee: :smiley:
 ## License
 
 The project is available as open source under the terms of the [MIT License](https://github.com/williamcanin/tkcrud/blob/master/LICENSE) © William Canin
+
+Stored in the organization: [Snakypy](https://github.com/snakypy)
 
 ## Credits
 

@@ -21,7 +21,7 @@ If you do not want to, you can start the project as follows:
 
 .. code-block:: shell
 
-    $ git clone https://github.com/williamcanin/tkcrud.git
+    $ git clone https://github.com/snakypy/snakypy-tkcrud.git
     $ cd tkcrud
     $ python -m venv venv
     $ . venv/bin/activate
@@ -43,6 +43,8 @@ License
 
 The gem is available as open source under the terms of the `MIT License`_ © William Canin
 
+Stored in the organization: `Snakypy`_
+
 Credits
 -------
 
@@ -54,11 +56,12 @@ Credits
 Links
 -----
 
-* Code: https://github.com/williamcanin/tkcrud
-* Documentation: https://github.com/williamcanin/tkcrud/README.md
-* Releases: https://pypi.org/project/tkcrud/
-* Issue tracker: https://github.com/williamcanin/tkcrud/issues
+* Code: https://github.com/snakypy/snakypy-tkcrud
+* Documentation: https://github.com/snakypy/snakypy-tkcrud/README.md
+* Releases: https://pypi.org/project/snakypy-tkcrud
+* Issue tracker: https://github.com/snakypy/snakypy-tkcrud/issues
 
+.. _Snakypy: https://github.com/snakypy
 .. _PyCharm: https://www.jetbrains.com/pycharm/
-.. _MIT License: https://github.com/williamcanin/tkcrud/blob/master/LICENSE
+.. _MIT License: https://github.com/snakypy/snakypy-tkcrud/blob/master/LICENSE
 .. _William Canin: http://williamcanin.github.io

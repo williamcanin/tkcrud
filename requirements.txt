@@ -1,6 +1,2 @@
-Babel==2.7.0
-mysql==0.0.2
 mysql-connector==2.2.9
-mysqlclient==1.4.6
-pytz==2019.3
-tkcalendar==1.5.1
+tkcalendar==1.6.1

@@ -1,14 +1,15 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, font, StringVar
 from tkcalendar import DateEntry
-from tkcrud.controller.client_controller import ClientController, get_clients
+from tkcrud.controller.client_controller import ClientController,\
+    saving_updating, get_clients, window_popup
 
 
 class FormClientRegister(tk.Toplevel, ClientController):
 
     def __init__(self, master, tree):
         tk.Toplevel.__init__(self, master)
-        # self.tree = tree
+        self.get_id = None
         self.title('Clients Register')
         frame = tk.LabelFrame(self, text='Register client')
         frame.grid(row=0, column=0, columnspan=33, pady=30)
@@ -51,9 +52,9 @@ class FormClientRegister(tk.Toplevel, ClientController):
         email.grid(row=10, column=1)
         btn_register_save = tk.Button(frame,
                                       text='Save', cursor="hand2",
-                                      command=lambda: self.saving_updating(
+                                      command=lambda: saving_updating(
                                             tree, tk.END, 'insert', messagebox,
-                                            None, name.get(), address.get(),
+                                            self.get_id, name.get(), address.get(),
                                             date_of_birth.get(), sex.get(),
                                             marital_status.get(), rg.get(),
                                             cpf.get(), cell_phone.get(),
@@ -145,7 +146,7 @@ class FormClientUpdate(tk.Toplevel, ClientController):
             email.grid(row=10, column=1)
 
             btn_save = tk.Button(frame, text='Save', cursor='hand2',
-                                 command=lambda event=None: self.saving_updating(
+                                 command=lambda event=None: saving_updating(
                                      tree, tk.END, 'update', messagebox,
                                      self.id, name.get(), address.get(),
                                      date_of_birth.get(), sex.get(),
@@ -162,7 +163,7 @@ class FormClientUpdate(tk.Toplevel, ClientController):
             master.wait_window(self)
 
         except IndexError:
-            self.window_popup(messagebox, 'Please, select record')
+            window_popup(messagebox, 'Please, select record')
         return
 
 

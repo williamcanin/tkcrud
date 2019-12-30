@@ -56,7 +56,6 @@ class ClientModel(Base):
         search = self.db.query(sql_query)
         if search:
             return search
-        # else:
         return False
 
     def delete_client(self, _id):

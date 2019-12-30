@@ -12,12 +12,6 @@ class Database(Base):
     def __init__(self):
         try:
             Base.__init__(self)
-            # # Create all directory
-            # self.create_folder(self.home_user, '.config/tkcrud/config')
-            # self.create_folder(self.home_user, '.config/tkcrud/data')
-            # # Create config
-            # self.create_config()
-
             if self.app_config['connection']['dbname'] == 'mysql':
                 # MySQL get data for connection in file JSON.
                 connection_data = self.app_config['connection']['mysql']

@@ -19,26 +19,21 @@ class TkCrud(Database, tk.Frame):
         self.master.geometry("1024x580")
         menu_bar = tk.Menu(self.master)
         cad_menu = tk.Menu(menu_bar, tearoff=0, font=self.font_submenu)
-        cad_menu.add_command(label='Clientes', command=lambda: FormClient(self.master))
+        cad_menu.add_command(label='Clients', command=lambda: FormClient(self.master))
         cad_menu.add_separator()
-        cad_menu.add_command(label='Sair')
-        menu_bar.add_cascade(label='Cadastros', menu=cad_menu, font=self.font_menu)
+        cad_menu.add_command(label='Exit')
+        menu_bar.add_cascade(label='Registration', menu=cad_menu, font=self.font_menu)
         tools = tk.Menu(menu_bar, tearoff=0)
         tools.add_command(label='Backup Database', font=self.font_submenu)
         menu_bar.add_cascade(label='Tools', menu=tools, font=self.font_menu)
         help_menu = tk.Menu(menu_bar, tearoff=0)
-        help_menu.add_command(label='Sobre', font=self.font_submenu)
-        menu_bar.add_cascade(label='Ajuda', menu=help_menu, font=self.font_menu)
+        help_menu.add_command(label='About', font=self.font_submenu)
+        menu_bar.add_cascade(label='Help', menu=help_menu, font=self.font_menu)
         self.master.config(menu=menu_bar)
         self.master.resizable(0, 0)
 
     def __str__(self):
-        # root = tk.Tk()
         return TkCrud().mainloop()
-
-    # @staticmethod
-    # def main():
-    #     return TkCrud(tk.Tk()).mainloop()
 
 
 if __name__ == '__main__':
